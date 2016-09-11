@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Mi Primera App Web</title>
+
+    <!-- Bootstrap -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://bootswatch.com/united/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js"></script>
+    <script src="/js/myCtrl.js"></script>
+
+</head>
+<body ng-controller="myCtrl">
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Home</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Usuarios <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/verUsuario">Ver Usuario</a></li>
+                        <li><a href="/crearUsuario">Crear Usuario</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bienvenido Usuario! <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Ver Perfil</a></li>
+                        <li><a href="#">Cerrar Sesión</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+
+<div>
+    <h1>{{title}}</h1>
+</div>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Username </th>
+        <th> Password </th>
+        <th> Email </th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="usuario in users">
+
+        <td>{{usuario.id}}</td>
+        <td>{{usuario.username}}</td>
+        <td>{{usuario.password}}</td>
+        <td>{{usuario.email}}</td>
+        <td><button class="btn btn-primary btn-lg" ng-click="searchPerson(usuario.id);" data-toggle="modal" data-target="#usuarioEditModal" class="btn btn-info btn-sm"> Editar </button></td>
+        <td><button class="btn btn-primary btn-lg" ng-click="deleteUsuario(usuario.id);"> Eliminar </button></td>
+        <div id="usuarioEditModal" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Edit Usuario</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="txtusername">Username</label>
+                                <input type="username" class="form-control" id="txtusername" ng-model= "usuario.username" placeholder= "username">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtpassword">Password</label>
+                                <input type="password" class="form-control" id="txtpassword" ng-model='usuario.password' placeholder= "password">
+                            </div>
+                            <div class="form-group">
+                                <label for="txtemail">Email</label>
+                                <input type="email" class="form-control" id="txtemail" ng-model='usuario.email' placeholder= "email">
+                            </div>
+
+                            <button type="submit" class="btn btn-default"  data-ng-click="updateUsuario(usuario)" data-dismiss="modal">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </tr>
+    </tbody>
+</table>
+
+<!--Edit person modal-->
+
+</body>
+</html>
