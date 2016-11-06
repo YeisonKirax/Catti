@@ -1,0 +1,26 @@
+<section data-ng-controller="UsuariosController" data-ng-init="find()">
+    <table class="table">
+        <thead>
+        <tr>
+            <th>mai</th>
+            <th> ID </th>
+            <th> Password </th>
+            <th> Email </th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="usuario in usuarios">
+            <td>{{usuario.id}}</td>
+            <td>{{usuario.password}}</td>
+            <td>{{usuario.email}}</td>
+            <td><button class="btn btn-primary btn-lg" ui-sref="editUsuario({usuarioID: usuario.id})"> editar </button></td>
+            <td><button class="btn btn-primary btn-lg" ng-click="remove(usuario);"> Borrar </button></td>
+            <td><button class="btn btn-primary btn-lg" ui-sref="viewUsuario({usuarioID: usuario.id})"> Ver </button></td>
+
+
+        </tr>
+        </tbody>
+    </table>
+    <h1 data-ng-hide="!usuarios || usuarios.length">No articles yet. <br> Why don't you <a ui-sref="createArticle">Create One</a>?</h1>
+</section>

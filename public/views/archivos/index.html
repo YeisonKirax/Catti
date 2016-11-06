@@ -1,0 +1,17 @@
+<section>
+    <body>
+    <h1>Cargar contactos desde archivo</h1>
+    <form  ng-controller="MyCtrl as up" name="up.upload_form">
+
+        <input type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'.csv'" accept="text/csv" ngf-max-size="20MB"/>
+        <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+        <i ng-show="up.upload_form.file.$error.maxSize">File too large
+            {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+        <!--  Multiple files
+         <div class="button" ngf-select ng-model="up.files" ngf-multiple="true">Select</div>
+         Drop files: <div ngf-drop ng-model="up.files" class="drop-box">Drop</div> -->
+        <button type="submit" ng-click="up.submit()">Subir a la base</button>
+        <p>{{up.progress}}</p>
+    </form>
+    </body>
+</section>

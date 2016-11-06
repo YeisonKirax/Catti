@@ -1,0 +1,32 @@
+<section data-ng-init="find()">
+
+    <table class="table">
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> NOMBRE </th>
+        <th> NUMERO </th>
+        <th> CORREO </th>
+        <th> ESTADO </th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="contacto in contactos">
+        <td>{{contacto.id}}</td>
+        <td>{{contacto.name}}</td>
+        <td>{{contacto.numero}}
+            <a href="skype:+569{{contacto.numero}}?call">call</a>
+        </td>
+        <td>{{contacto.email}}</td>
+        <td>{{contacto.state}}</td>
+        <td><button class="btn btn-primary btn-lg" ui-sref="editarContacto({contactoID: contacto.id})"> editar </button></td>
+
+
+    </tr>
+    </tbody>
+    </table>
+    <h1 data-ng-hide="!contactos || contactos.length">No articles yet. <br> Why don't you <a ui-sref="createArticle">Create One</a>?</h1>
+
+
+</section>

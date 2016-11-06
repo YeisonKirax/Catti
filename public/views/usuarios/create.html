@@ -1,0 +1,33 @@
+<section>
+	<form class="form-horizontal" data-ng-submit="create()">
+		<div class="control-group">
+			<label class="control-label" for="email">Email</label>
+			<div class="controls">
+				<input type="text" data-ng-model="email" id="email" placeholder="Email" required>
+			</div>
+		</div>
+		<div class="control-group">
+			<label class="control-label" for="password">Contrasena</label>
+			<div class="controls">
+				<input type="text" data-ng-model="password" id="password" placeholder="Contraseña" required>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="privilegio">Permiso</label>
+			<div class="controls">
+				<select data-ng-model="privilegio" id="privilegio" name="permiso">
+					<option value="ADMIN" >ADMIN</option>
+					<option value="ENCUESTADOR">ENCUESTADOR</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<div class="controls">
+				<input type="submit" class="btn">
+			</div>
+		</div>
+
+	</form>
+</section>
