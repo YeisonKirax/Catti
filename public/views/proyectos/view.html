@@ -1,9 +1,0 @@
-<section data-ng-init="findOne()">
-    <span>{{proyecto.updatedAt | date:'medium'}}</span>/
-    <h2>{{proyecto.name}}</h2>
-    <div data-ng-show="global.user.id == proyecto.User.id">
-        <a class="btn" ui-sref="editProyecto({id : proyecto.id})">Edit</a>
-        <a class="btn" data-ng-click="remove();">Delete</a>
-    </div>
-    <div>{{article.content}}</div>
-</section>
