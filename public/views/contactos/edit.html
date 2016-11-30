@@ -123,10 +123,16 @@ DOCTYPE html>
 								<div class="control-group">
 									<label class="control-label" for="state">ESTADO</label>
 
-									<div class="controls">
-										<input type="text" data-ng-model="contacto.state" id="state" placeholder="Estado" required>
-										</input>
-									</div>
+									<div class="control-group">
+										<label class="control-label" for="state">Permiso</label>
+											<div class="controls">
+												<select data-ng-model="contacto.state" id="state" name="state">
+													<option value="no contesta" >No Contesta</option>
+													<option value="pendiente">Pendiente</option>
+													<option value="contestado">Contestado</option>
+												</select>
+										</div>
+								</div>
 								</div>
 								<div class="control-group">
 									<div class="controls">
