@@ -56,7 +56,7 @@ exports.update = function(req, res) {
         rut: req.body.rut,
         verificador: req.body.verificador,
         nombre: req.body.nombre,
-        apellido: req.body.appellido,
+        apellido: req.body.apellido,
         email: req.body.email,
         direccion:req.body.direccion,
         proyecto: req.body.proyecto,
