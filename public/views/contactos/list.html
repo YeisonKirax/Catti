@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+		<link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="../../css/tabla.css">
+		<link rel="stylesheet" href="../../css/barra.css">
+	</head>
+	<body>
+
+
+
+
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<!-- /.navbar-collapse -->
+		<div class="navbar-inner">
+			<div class="container ">
+
+
+				<a href="/"><img src="https://s3.amazonaws.com/learncfinaweek/assets/logo.png" border="0" id="logo"/></a>
+
+				<ul class="nav navbar-nav">
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="/usuarios">Listar usuarios</a></li>
+							<li><a href="/usuarios/create">Crear nuevo usuario</a></li>
+						</ul>
+					</li>
+					<li class="dropdown" >
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Proyectos<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/proyectos">Listar proyectos</a></li>
+							<li><a href="/proyectos/create">Crear proyecto</a></li>
+						</ul>
+					</li>
+					<li class="dropdown" >
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Encuestas<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/encuestas">Listar Encuestas</a></li>
+							<li><a target="_blank" href="https://www.surveymonkey.com/create/?ut_source=create_survey&ut_source2=li_home_bottom">Crear encuesta</a></li>
+							<li><a href="/encuestas/create">Cargar encuesta</a></li>
+						</ul>
+					</li>
+					<li class="dropdown" >
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">Contactos<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="/contactos">Listar Contactos</a></li>
+							<li><a href="/archivo">Cargar contactos</a></li>
+						</ul>
+					</li>
+					<li ><a href="/escucharxd">Escuchar grabaciones</a></li>
+
+				</ul>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta
+						<b class="caret"></b></a>
+						<ul class="dropdown-menu">
+								<li><a href="/signoutAdmin">Cerrar sesion</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+	<div class="container">
+		<div class="row">
+
+			<section class="content" data-ng-controller="ContactosAController" data-ng-init="find()">
+				<h1>Contactos</h1>
+				<div class="col-md-8 col-md-offset-2">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="pull-right">
+
+								<div class="btn-group">
+									<button type="button" class="btn btn-success btn-filter" data-target="contestado">Contestado</button>
+									<button type="button" class="btn btn-warning btn-filter" data-target="no contesta">No contesta</button>
+									<button type="button" class="btn btn-danger btn-filter" data-target="pendiente">Pendiente</button>
+									<button type="button" class="btn btn-default btn-filter" data-target="all">Todos</button>
+								</div>
+							</div>
+							<div class="table-container">
+								<table class="table table-filter">
+									<thead>
+									<tr>
+										<th> CHEQUEO </th>
+										<th> RUT </th>
+										<th> VERIFICADOR </th>
+										<th> NOMBRES </th>
+										<th> APELLIDOS </th>
+										<th> EMAIL </th>
+										<th> DIRECCION </th>
+										<th> PROYECTO </th>
+										<th> NUMERO </th>
+										<th> ESTADO </th>
+										<th> ACCIONES </th>
+
+									</tr>
+									</thead>
+									<tbody>
+									<tr ng-repeat="contacto in contactos" data-status="{{contacto.state}}">
+										<td>
+											<div class="ckbox">
+												<input type="checkbox" id="'checkbox'+{{contacto.id}}">
+												<label for="'checkbox'+{{contacto.id}}"></label>
+											</div>
+										</td>
+										<td>
+											<div class="media">
+												{{contacto.rut}}
+											</div>
+										</td>
+										<td>
+											<div class="media">
+												{{contacto.verificador}}
+											</div></td>
+										<td>
+											<div class="media">
+											{{contacto.nombre}}
+											</div>
+										</td>
+										<td>
+											<div class="media">
+												{{contacto.apellido}}
+											</div>
+										</td>
+										<td>
+											<div class="media">
+												{{contacto.email}}
+											</div>
+										</td>
+
+										<td>
+											<div class="media">
+												{{contacto.direccion}}
+											</div>
+										</td>
+										<td>
+											<div class="media">
+												{{contacto.proyecto}}
+											</div>
+										</td>
+										<td>
+											<div class="media">
+												{{contacto.numero}}
+											</div>
+										</td>
+
+										<td>
+											<div class="media">
+												<span class="'pull-right'+{{contacto.state}}">{{contacto.state}}</span>
+											</div>
+										</td>
+										<td>
+											<div class="media">
+												<button class="btn btn-primary btn-lg" ui-sref="editarContactoADMIN({contactoID: contacto.id})"> Editar </button>
+											</div>
+										</td>
+
+										<td>
+											<div class="media">
+												<button class="btn btn-primary btn-lg" ng-click="remove(contacto);"> Borrar </button>
+											</div>
+										</td>
+
+
+
+									</tr>
+									</tbody>
+								</table>
+
+							</div>
+						</div>
+					</div>
+					<div class="content-footer">
+						<p>
+							Page © - 2016 <br>
+							Powered By <a href="https://www.facebook.com/tavo.qiqe.lucero" target="_blank">TavoQiqe</a>
+						</p>
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+
+	<script src="../../js/tabla.js"></script>
+	</body>
+</html>
+

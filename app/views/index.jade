@@ -1,0 +1,13 @@
+extends layouts/default
+
+block content
+    script(src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js",type="text/javascript")
+
+    section(ui-view)
+
+    script(type="text/javascript").
+            window.user = !{user};
+
+
+    script(type="text/javascript",src="/jquery/jquery.js")
+    script(type="text/javascript",src="/home/yeison/stack/public/js/cargar_grab.js")

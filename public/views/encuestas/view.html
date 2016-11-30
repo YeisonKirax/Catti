@@ -1,0 +1,8 @@
+<section data-ng-init="findOne()">
+<span>{{encuesta.updatedAt | date:'medium'}}</span>/
+<h2>{{encuesta.nombre}}</h2>
+<div data-ng-show="global.user.id == encuesta.User.id">
+    <a class="btn" ui-sref="editEncuesta({encuestaID : encuesta.id})">Edit</a>
+    <a class="btn" data-ng-click="remove();">Delete</a>
+</div>
+</section>

@@ -1,0 +1,34 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    }
+    .app{
+        height: 100%;
+        width: 100%;
+        display: flex;
+
+    }
+    .contenedor-izquierdo{
+        flex: 1;
+        overflow-y: scroll;
+
+    }
+    .lista-grabaciones{
+        list-style: none;
+        margin: 0;
+        padding: 0;
+
+    }
+    .grabacion{
+        padding: 20px;
+        border-bottom: 2px solid #9f191f;
+        cursor: pointer;
+    }
+    .contenedor-derecho{
+        flex: 2;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+    }

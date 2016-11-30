@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../../css/tabla.css">
+    <link rel="stylesheet" href="../../css/barra.css">
+</head>
+<body>
+
+
+
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <!-- /.navbar-collapse -->
+    <div class="navbar-inner">
+        <div class="container ">
+
+
+            <a href="/"><img src="https://s3.amazonaws.com/learncfinaweek/assets/logo.png" border="0" id="logo"/></a>
+
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Usuarios <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="/usuarios">Listar usuarios</a></li>
+                        <li><a href="/usuarios/create">Crear nuevo usuario</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Proyectos<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/proyectos">Listar proyectos</a></li>
+                        <li><a href="/proyectos/create">Crear proyecto</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Encuestas<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/encuestas">Listar Encuestas</a></li>
+                        <li><a target="_blank" href="https://www.surveymonkey.com/create/?ut_source=create_survey&ut_source2=li_home_bottom">Crear encuesta</a></li>
+                        <li><a href="/encuestas/create">Cargar encuesta</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">Contactos<b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/contactos">Listar Contactos</a></li>
+                        <li><a href="/archivo">Cargar contactos</a></li>
+                    </ul>
+                </li>
+                <li ><a href="/escucharxd">Escuchar grabaciones</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Cuenta
+                    <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/signoutAdmin">Cerrar sesion</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+
+        <section class="content">
+            <h1>Cargar contactos desde archivo</h1>
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="pull-right">
+                        </div>
+
+                                <form  ng-controller="MyCtrl as up" name="up.upload_form">
+
+                                    <input type="file" ngf-select ng-model="up.file" name="file" ngf-pattern="'.csv'" accept="text/csv" ngf-max-size="20MB"/>
+                                    <i ng-show="up.upload_form.file.$error.required">*required</i><br>
+                                    <i ng-show="up.upload_form.file.$error.maxSize">File too large
+                                        {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+                                    <button type="submit" ng-click="up.submit()">Subir a la base</button>
+                                    <p>{{up.progress}}</p>
+                                </form>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="content-footer">
+                    <p>
+                        Page © - 2016 <br>
+                        Powered By <a href="https://www.facebook.com/tavo.qiqe.lucero" target="_blank">TavoQiqe</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="../../js/tabla.js"></script>
+</body>
+</html>
+
+
